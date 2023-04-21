@@ -1,0 +1,17 @@
+#centerHeading{
+    text-align: center;
+    color: grey;
+}
+hr.solid {
+    border-top: 3px solid #bbb;
+  }
+#addTask{
+    border: none;
+    text-align: center;
+}
+#addTask.onclcik{
+    background-color: darkgrey;
+}
+body{
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

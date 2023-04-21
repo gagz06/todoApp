@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>To Do List App</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<h1 id="centerHeading">
+    TODO App
+</h1>    
+<hr class="solid">
+<form action="/add-task" method="POST">
+    <p>DESCRIPTION</p>
+<input type="text" name="work" placeholder="What do you need to do ?" required>
+<br>
+<hr class="solid">
+<label>CATEGORY</label>
+<select name="category">
+    <option value="Personal">PERSONAL</option>
+    <option value="Office">OFFICE</option>
+    <option value="Private">PRIVATE</option>
+    <option value="School">SCHOOL</option>
+  </select>
+  <label name="taskDate">DUE DATE:</label>
+<input type="date"  name="taskDate">
+<br>
+<hr class="solid">
+<button>ADD TASK</button>
+<button>DELETE TASK</button>
+<hr class="solid">
+</form>
+</body>
+</html>
