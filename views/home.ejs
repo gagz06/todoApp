@@ -10,35 +10,37 @@
 <hr class="solid">
 <form action="/add-task" method="POST">
     <p>DESCRIPTION</p>
-<input type="text" name="work" placeholder="What do you need to do ?" required>
+<input type="text" name="work" id="Description" placeholder="What do you need to do ?" required>
 <br>
 <hr class="solid">
 <label>CATEGORY</label>
-<select name="category">
+<select name="category" id="cat">
     <option value="Personal">PERSONAL</option>
     <option value="Office">OFFICE</option>
     <option value="Private">PRIVATE</option>
     <option value="School">SCHOOL</option>
   </select>
   <label name="taskDate">DUE DATE:</label>
-<input type="date"  name="taskDate">
+<input type="date" id="mydate"  name="taskDate">
 <br>
 <hr class="solid">
-<button>ADD TASK</button>
+<button id="Addbtn">ADD TASK</button>
 </form>
-<button>DELETE TASK</button>
-<hr class="solid">
 
 <div>
+  <form id="taskShowData" method="post" action="/delete-taskListData">
+      <button id="Delbtn">DELETE TASK</button>
+      <hr class="solid">
     <% for (let i of task_list) { %> 
-<input type="checkbox" id="btnCheckbox" name="taskChecked" value="taskSelected">
-<label for="task1"><%= i.work%> </label>
-<br>
-<label for="dateWork"><%=i.taskDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })%></label>
-<br>
-<label for="dateWork"><%=i.category%></label>
-<hr class="solid">
-<% } %>
+        <input type="checkbox" id="<%=i.id%>" class="my-checkbox" name="_id" value="<%=i.id%>">
+        <label for="task1"><%= i.work%> </label>
+        <br>
+        <label for="dateWork"><%=i.taskDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })%></label>
+        <br>
+        <label for="dateWork"><%=i.category%></label>
+        <hr class="solid">
+        <% } %>
+  </form>
 </div>
 
 <script type="text/javascript" src="/js/home.js"></script>

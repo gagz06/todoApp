@@ -17,7 +17,6 @@ app.get('/', function(req, res){
     //console.log("get called");
     toDoTask.find({})
         .then(newTask => {
-            console.log('Tasks:', newTask);
             return res.render('home',{
                 task_list: newTask
             });
@@ -38,13 +37,31 @@ app.post('/add-task', function(req, res){
             taskDate: req.body.taskDate
         })
         .then((newTask)=>{
-            console.log('*********',newTask);
+            console.log('*********');
                 return res.redirect('back');
         })
         .catch((err)=>{
             console.log('Error on adding contact');
             return;
         });
+});
+
+app.post('/delete-taskListData',function(req,res){
+    console.log(req.body);
+    // for(const index in req.body._id){
+        for (const id of req.body._id){
+        // const id = req.body._id[index];
+        // console.log(id);
+        toDoTask.findByIdAndDelete(id)
+        .then((status)=>{
+            console.log(status);
+            return res.redirect('back');
+        }).catch(err=>{
+            console.log("Error in deleting data");
+            return;
+        })
+    }
+
 });
 
 
