@@ -7,14 +7,28 @@ const db=require('./config/mongoose');
 const toDoTask= require('./models/task');
 const app= express();
 
-app.use('/',require('./routes'));
-
 // set up the view engine
 app.set('view engine','ejs');
 app.set('views','./views');
 app.use(express.static('assets'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
+app.get('/', function(req, res){
+    //console.log("get called");
+    toDoTask.find({})
+        .then(newTask => {
+            console.log('Tasks:', newTask);
+            return res.render('home',{
+                task_list: newTask
+            });
+        })
+        .catch(err => {
+            console.log('Error while fetching tasks:', err);
+            return res.status(500).send('Internal server error');
+        });
+});
+
+app.use('/',require('./routes'));
 
 app.post('/add-task', function(req, res){
     //console.log(req.body.work);
